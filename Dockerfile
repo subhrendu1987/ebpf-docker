@@ -1,15 +1,27 @@
-FROM docker/for-desktop-kernel:5.10.25-6594e668feec68f102a58011bb42bd5dc07a7a9b AS ksrc
-
 FROM ubuntu:latest
 
-WORKDIR /
-COPY --from=ksrc /kernel-dev.tar /
-RUN tar xf kernel-dev.tar && rm kernel-dev.tar
+RUN apt-get update && \
+    apt-get install -y build-essential git cmake \
+                       zlib1g-dev libevent-dev \
+                       libelf-dev llvm \
+                       clang libc6-dev-i386
 
-RUN apt-get update
-RUN apt install -y kmod python3-bpfcc
+RUN mkdir /src && \
+    git init
+WORKDIR /src
 
-COPY hello_world.py /root
+# Link asm/byteorder.h into eBPF
+RUN ln -s /usr/include/x86_64-linux-gnu/asm/ /usr/include/asm
 
-WORKDIR /root
-CMD mount -t debugfs debugfs /sys/kernel/debug && /bin/bash
+# Build libbpf as a static lib
+RUN git clone https://github.com/libbpf/libbpf-bootstrap.git && \
+    cd libbpf-bootstrap && \
+    git submodule update --init --recursive
+
+RUN cd libbpf-bootstrap/libbpf/src && \
+    make BUILD_STATIC_ONLY=y && \
+    make install BUILD_STATIC_ONLY=y LIBDIR=/usr/lib/x86_64-linux-gnu/
+
+# Clones the linux kernel repo and use the latest linux kernel source BPF headers 
+RUN git clone --depth 1 git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git && \
+    cp linux/include/uapi/linux/bpf* /usr/include/linux/

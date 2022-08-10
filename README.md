@@ -1,27 +1,15 @@
-# eBPF for Docker Desktop on macOS
-
-eBPF and its compiler bcc need access to some parts of the kernel and its headers to work. This image shows how you can do that with Docker Desktop for mac's linuxkit host VM.
+# eBPF for Docker
+## Source Material
+https://andreybleme.com/2022-05-22/running-ebpf-programs-on-docker-containers/
 
 ## Build the image
+`sudo docker build -t ebpf-docker .`
 
-Done quite simply with:
+## Execute the image
 
-`docker build -t ebpf-for-mac .`
-
-## Run the image
-
-It needs to run as privileged, and depending on what you want to do, having access to the host's PID namespace is pretty useful too.
-
-```
-docker run -it --rm \ 
-  --privileged \ 
-  -v /lib/modules:/lib/modules:ro \ 
-  -v /etc/localtime:/etc/localtime:ro \ 
-  --pid=host \ 
-  ebpf-for-mac
-```
-
-Note: /lib/modules probably doesn't exist on your mac host, so Docker will map the volume in from the linuxkit host VM.
+`sudo docker run -it ebpf-docker -t ebpf-playground`
+## Inside docker shell
+`mount -t debugfs none /sys/kernel/debug`
 
 ## Maintenance
 
