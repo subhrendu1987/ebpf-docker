@@ -6,7 +6,7 @@ https://andreybleme.com/2022-05-22/running-ebpf-programs-on-docker-containers/
 `sudo docker build -t ebpf-docker .`
 
 ## Execute the image
-`sudo docker run -it ebpf-docker -t ebpf-playground`
+`sudo docker run -it --name ebpf-playground ebpf-docker`
 ## Inside docker shell
 `mount -t debugfs none /sys/kernel/debug`
 
@@ -16,12 +16,12 @@ Docker published their for-desktop kernel's [on Docker hub](https://hub.docker.c
 
 # Handson/Execute
 ## Start Container
-`sudo docker run -it --privileged ebpf-docker:latest -t ebpf-playground`
+`sudo docker run -it --privileged --name ebpf-playground ebpf-docker:latest`
 ## Inside docker shell
 `mount -t debugfs none /sys/kernel/debug`
 ## Examples
 ```
-cd examples/c
+cd /src/libbpf-bootstrap/examples/c
 make minimal
 sudo ./minimal
 ```
