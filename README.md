@@ -1,4 +1,4 @@
-# eBPF for Docker
+# Build eBPF inside Docker
 ## Source Material
 https://andreybleme.com/2022-05-22/running-ebpf-programs-on-docker-containers/
 
