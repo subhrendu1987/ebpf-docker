@@ -16,7 +16,7 @@ Docker published their for-desktop kernel's [on Docker hub](https://hub.docker.c
 
 # Handson/Execute
 ## Start Container
-` docker run -it --privileged ebpf-playground:latest`
+`sudo docker run -it --privileged ebpf-docker:latest -t ebpf-playground`
 ## Inside docker shell
 `mount -t debugfs none /sys/kernel/debug`
 ## Examples
