@@ -18,3 +18,35 @@
 
 ## Tune up OPA with eBPF capabilities
 * (eBPF persona) [https://github.com/eBPFDevSecTools/ebpf-projects-annotations/blob/master/asset/persona_kb.json]
+
+
+# Junk (Will be removed later)
+* Query OPA server with data
+```
+curl -X POST \
+  --header "Content-Type: application/json" \
+  --data-binary '{
+    "query": "data.example.greeting",
+    "input": {
+      "user": "Alice"
+    }
+  }' \
+  http://localhost:8181/v1/data/example/greeting
+```
+* Query OPA server with data (Alternate)
+Store the following in `query.json`
+```
+{
+    "query": "data.example.greeting",
+    "input": {
+      "user": "Alice"
+    }
+}
+```
+And
+```
+curl -X POST \
+  --header "Content-Type: application/json" \
+  --data-binary @query.json \
+  http://localhost:8181/v1/data/example/greeting
+```
