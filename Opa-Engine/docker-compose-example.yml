@@ -1,0 +1,7 @@
+version: '3'
+services:
+  opa-eval:
+    image: openpolicyagent/opa
+    volumes:
+      - ${PWD}:/example
+    command: eval -d /example 'data.example.greeting'
