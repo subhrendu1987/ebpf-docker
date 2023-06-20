@@ -1,0 +1,8 @@
+#sudo docker run -p 8181:8181 --name opa-ebpf openpolicyagent/opa run --server --log-level debug
+version: '3'
+services:
+  opa-ebpf:
+    image: openpolicyagent/opa
+    command: run --server --log-level debug
+    ports:
+      - 8181:8181
