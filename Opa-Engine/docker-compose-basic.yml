@@ -3,6 +3,7 @@ version: '3'
 services:
   opa-ebpf:
     image: openpolicyagent/opa
+    container_name: opa_basic
     command: run --server --log-level debug
     ports:
       - 8181:8181
