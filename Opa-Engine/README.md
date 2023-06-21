@@ -17,7 +17,7 @@
 
 
 ## Tune up OPA with eBPF capabilities
-* (eBPF persona) [https://github.com/eBPFDevSecTools/ebpf-projects-annotations/blob/master/asset/persona_kb.json]
+* [https://github.com/eBPFDevSecTools/ebpf-projects-annotations/blob/master/asset/persona_kb.json](eBPF persona) 
 
 
 # Junk (Will be removed later)
