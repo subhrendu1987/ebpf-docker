@@ -5,6 +5,8 @@ services:
     container_name: opa_stored_policy
     volumes:
       - ./example:/example
-    stdin_open: true 
-    tty: true
-    #command: eval -d /example 'data.example.greeting'
+    #stdin_open: true 
+    #tty: true
+    command: run --server /example/policy.rego --set data.file=/example/persona_opa.json --log-level debug
+    ports:
+      - 8181:8181

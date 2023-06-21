@@ -8,16 +8,17 @@
 	* or With docker compose
 `sudo docker-compose -f basic-docker-compose.yml up`
 	* Test `curl 127.0.0.1:8181` or Open Link in the browser (127.0.0.1:8181)[127.0.0.1:8181]
+
 ## OPA with rules and 
 * Test with data 
 	* With docker run
-`sudo docker run -v $PWD:/example openpolicyagent/opa eval -d /example 'data.example.greeting'`
+`sudo docker run -v ./example:/example openpolicyagent/opa eval -d /example 'data.example.greeting'`
 	* or With docker compose
 `sudo docker-compose -f example-docker-compose.yml up`
 
 
 ## Tune up OPA with eBPF capabilities
-* [https://github.com/eBPFDevSecTools/ebpf-projects-annotations/blob/master/asset/persona_kb.json](eBPF persona) 
+* [https://github.com/eBPFDevSecTools/ebpf-projects-annotations/blob/master/asset/persona_kb.json] (eBPF persona) 
 
 
 # Junk (Will be removed later)
@@ -26,12 +27,12 @@
 curl -X POST \
   --header "Content-Type: application/json" \
   --data-binary '{
-    "query": "data.example.greeting",
+    "query": "data.example.allow",
     "input": {
-      "user": "Alice"
+      "progs":"map_read"
     }
   }' \
-  http://localhost:8181/v1/data/example/greeting
+  http://localhost:8181/v1/data/example/policy
 ```
 * Query OPA server with data (Alternate)
 Store the following in `query.json`
