@@ -1,7 +1,8 @@
 package example
 
-greeting := msg {
-    info := opa.runtime()
-    hostname := info.env["HOSTNAME"] # Docker sets the HOSTNAME environment variable.
-    msg := sprintf("hello from container %q!", [hostname])
-}
+default allow := false
+
+
+some i, j
+    server := input.servers[_] 
+

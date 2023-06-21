@@ -5,4 +5,6 @@ services:
     container_name: opa_stored_policy
     volumes:
       - ./example:/example
-    command: eval -d /example 'data.example.greeting'
+    stdin_open: true 
+    tty: true
+    #command: eval -d /example 'data.example.greeting'
