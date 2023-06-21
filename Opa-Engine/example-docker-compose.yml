@@ -4,5 +4,5 @@ services:
     image: openpolicyagent/opa
     container_name: opa_stored_policy
     volumes:
-      - ${PWD}/example:/example
+      - ./example:/example
     command: eval -d /example 'data.example.greeting'
