@@ -1,5 +1,5 @@
 {
-    "progs": [
+    "progs": {
         {
             "Persona": [
                 {
@@ -277,5 +277,5 @@
             ], 
             "Name": "pkt_go_to_next_module"
         }
-    ]
+    }
 }
