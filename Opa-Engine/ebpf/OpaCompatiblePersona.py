@@ -12,9 +12,9 @@ def parse_args():
     return args
 #############################################################################
 def convert(data):
-    newdata={"progs":[]}
+    newdata={"progs":{}}
     for k in list(data.keys()):
-        newdata["progs"].append(data[k])
+        newdata["progs"][k]=data[k]
     return(newdata)
 #############################################################################
 ''' Ipython Stub

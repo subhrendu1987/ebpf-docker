@@ -9,12 +9,34 @@
 `sudo docker-compose -f basic-docker-compose.yml up`
 	* Test `curl 127.0.0.1:8181` or Open Link in the browser (127.0.0.1:8181)[127.0.0.1:8181]
 
-## OPA with rules and 
-* Test with data 
-	* With docker run
-`sudo docker run -v ./example:/example openpolicyagent/opa eval -d /example 'data.example.greeting'`
-	* or With docker compose
-`sudo docker-compose -f example-docker-compose.yml up`
+## Prepare data file for OPA
+* Take the input as `persona_kb.json`
+  `cd ebpf; python OpaCompatiblePersona.py -s ../persona_kb.json -d ./persona_opa.json`
+## OPA test with ebpf data and rules with test suit
+### Local evaluation
+  `cd ebpf; ../opa test .`
+### With docker compose
+* Host server with `sudo docker-compose -f ebpf-docker-compose.yml up`
+* Test with client 
+  - `False` : `curl http://localhost:8181/v1/data/ebpf/allow` 
+  - `True` :
+  ```
+  curl --location 'http://localhost:8181/v1/data/ebpf/allow' \
+--header 'Content-Type: application/json' \
+--data '{
+    "input": {
+        "progs": "map_read"
+    }
+}'
+  ```
+  - `False`: 
+  ```
+  curl --location 'http://localhost:8181/v1/data/ebpf/allow' --header 'Content-Type: application/json' --data '{
+    "input": {
+        "progs": "map_update"
+    }
+}'
+```
 
 
 ## Tune up OPA with eBPF capabilities

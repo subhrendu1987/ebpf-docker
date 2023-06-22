@@ -1,5 +1,5 @@
 package ebpf_test
-import data.ebpf
+import data.ebpf.allow
 
 import future.keywords.contains
 import future.keywords.if
@@ -16,7 +16,7 @@ test_allow_if__bpf_map_lookup_elem{
 }
 
 test_allow_if__NOT_bpf_map_lookup_elem{
-	allow with input as {
+	not allow with input as {
 		"progs":"map_update"
 	}
 }

@@ -1,6 +1,6 @@
 {
     "progs": {
-        {
+        "update_pkt": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -69,7 +69,7 @@
             ], 
             "Name": "update_pkt"
         }, 
-        {
+        "read_sys_info": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -158,7 +158,7 @@
             ], 
             "Name": "read_sys_info"
         }, 
-        {
+        "pkt_go_to_next_module": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -166,16 +166,16 @@
                 }
             ], 
             "Helpers": [
-                "TC_ACT_REPEAT", 
-                "TC_ACT_REDIRECT", 
-                "XDP_TX", 
-                "XDP_REDIRECT", 
-                "CTX_ACT_REDIRECT", 
-                "CTX_ACT_TX"
+                "TC_ACT_UNSPEC", 
+                "TC_ACT_OK", 
+                "TC_ACT_RECLASSIFY", 
+                "TC_ACT_PIPE", 
+                "XDP_PASS", 
+                "CTX_ACT_OK"
             ], 
-            "Name": "pkt_alter_or_redo_processing_or_interface"
+            "Name": "pkt_go_to_next_module"
         }, 
-        {
+        "read_skb": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -206,7 +206,7 @@
             ], 
             "Name": "read_skb"
         }, 
-        {
+        "pkt_stop_processing_drop_packet": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -222,7 +222,7 @@
             ], 
             "Name": "pkt_stop_processing_drop_packet"
         }, 
-        {
+        "map_read": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -239,7 +239,7 @@
             ], 
             "Name": "map_read"
         }, 
-        {
+        "map_update": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -260,7 +260,7 @@
             ], 
             "Name": "map_update"
         }, 
-        {
+        "pkt_alter_or_redo_processing_or_interface": {
             "Persona": [
                 {
                     "Feature_of_interest": "", 
@@ -268,14 +268,14 @@
                 }
             ], 
             "Helpers": [
-                "TC_ACT_UNSPEC", 
-                "TC_ACT_OK", 
-                "TC_ACT_RECLASSIFY", 
-                "TC_ACT_PIPE", 
-                "XDP_PASS", 
-                "CTX_ACT_OK"
+                "TC_ACT_REPEAT", 
+                "TC_ACT_REDIRECT", 
+                "XDP_TX", 
+                "XDP_REDIRECT", 
+                "CTX_ACT_REDIRECT", 
+                "CTX_ACT_TX"
             ], 
-            "Name": "pkt_go_to_next_module"
+            "Name": "pkt_alter_or_redo_processing_or_interface"
         }
     }
 }
