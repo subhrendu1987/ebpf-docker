@@ -1,4 +1,4 @@
-package example
+package ebpf
 
 import future.keywords.contains
 import future.keywords.if

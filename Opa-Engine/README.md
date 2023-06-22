@@ -22,6 +22,15 @@
 
 
 # Junk (Will be removed later)
+## OPA Playground 
+* URL `https://play.openpolicyagent.org/p/mCu2pPeWmX`
+* Get data.json `curl https://play.openpolicyagent.org/v1/data/tFejKT03RI`
+* Get input.json `curl https://play.openpolicyagent.org/v1/input/tFejKT03RI`
+* Get policy.rego ``
+* `curl https://play.openpolicyagent.org/v1/input/tFejKT03RI \
+| curl localhost:8181/v1/data -d @- | cat `
+
+
 * Query OPA server with data
 ```
 curl -X POST \
